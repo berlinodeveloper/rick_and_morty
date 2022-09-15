@@ -1,0 +1,27 @@
+header,
+footer {
+  padding: 1rem 0;
+  background-color: white;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+footer {
+  text-align: center;
+}
+
+main {
+  padding-top: 4rem;
+}
+
+.header-nav ul {
+  display: flex;
+}
+
+.header-nav ul > li:not(:last-child) {
+  margin-right: 1rem;
+}
