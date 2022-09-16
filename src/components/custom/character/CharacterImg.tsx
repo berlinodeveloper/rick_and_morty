@@ -7,6 +7,7 @@ import starFilled from "assets/icons/starFilled.png";
 import { useAppDispatch, useAppSelector } from "hooks/redux/hooks";
 import { toggle } from "hooks/redux/charactersStarred";
 import Modal from "../modal/Modal";
+import CharacterDetails from "./CharacterDetails";
 
 export default function CharacterImg({ character }: { character: Character }) {
   const charactersStarred = useAppSelector((state) => state.charactersStarred);
@@ -35,7 +36,12 @@ export default function CharacterImg({ character }: { character: Character }) {
         onClick={handleClickStar}
         className="absolute character-star"
       />
-      {showModal && <Modal>Ciao</Modal>};
+      <p className="absolute character-name">{character.name}</p>
+      {showModal && (
+        <Modal setShowModal={setShowModal}>
+          <CharacterDetails character={character} />
+        </Modal>
+      )}
     </>
   );
 }

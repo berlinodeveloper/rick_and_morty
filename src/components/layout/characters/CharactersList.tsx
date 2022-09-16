@@ -9,35 +9,50 @@ import CharacterImg from "components/custom/character/CharacterImg";
 export default function Characters() {
   const [params] = useSearchParams();
   const pageNumber = Number(params.get("page") ?? 1);
-  const characters = useApiCharacters(pageNumber);
+  const characterName = params.get("name");
+  const characters = useApiCharacters(
+    pageNumber,
+    characterName as string | undefined
+  );
 
   const links: MyLink[] = [];
 
-  characters?.info.prev &&
+  characters?.info?.prev &&
     links.push({
       name: "Previous Page",
-      path: `/characters/?page=${(pageNumber - 1).toString()}`,
+      url: `/characters/?page=${pageNumber - 1}${
+        characterName ? "&name=" + characterName : ""
+      }`,
     });
 
-  characters?.info.next &&
+  characters?.info?.next &&
     links.push({
       name: "Next Page",
-      path: `/characters/?page=${(pageNumber + 1).toString()}`,
+      url: `/characters/?page=${pageNumber + 1}${
+        characterName ? "&name=" + characterName : ""
+      }`,
     });
 
   return characters ? (
-    <>
-      <ul>
-        {characters.results.map((character) => (
-          <li key={character.id} className="relative">
-            <CharacterImg character={character} />
-          </li>
-        ))}
-      </ul>
-      <div className="pagination">
-        <Links links={links} />
-      </div>
-    </>
+    characters.results ? (
+      <>
+        <div className="pagination">
+          <Links links={links} />
+        </div>
+        <ul>
+          {characters.results.map((character) => (
+            <li key={character.id} className="relative">
+              <CharacterImg character={character} />
+            </li>
+          ))}
+        </ul>
+        <div className="pagination">
+          <Links links={links} />
+        </div>
+      </>
+    ) : (
+      <p>No characters founded</p>
+    )
   ) : (
     <Loading />
   );

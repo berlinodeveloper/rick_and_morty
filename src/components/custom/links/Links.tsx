@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export type MyLink = {
   name: string;
-  path: string;
+  url: string;
 };
 
 export default function Links({ links }: { links: MyLink[] }) {
@@ -11,7 +11,7 @@ export default function Links({ links }: { links: MyLink[] }) {
     <ul>
       {links.map((link) => (
         <li key={link.name}>
-          <NavLink to={link.path}>{link.name}</NavLink>
+          <NavLink to={link.url}>{link.name}</NavLink>
         </li>
       ))}
     </ul>

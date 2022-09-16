@@ -1,3 +1,7 @@
+:root {
+  --bg-color: #61c5b1;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +17,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #61c5b1;
+  background-color: var(--bg-color);
 }
 
 code {
@@ -32,4 +36,15 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+#portal {
+  position: fixed;
+  z-index: 2;
+}
+
+#portal > div {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
 }

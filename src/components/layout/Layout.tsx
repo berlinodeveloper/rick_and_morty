@@ -4,8 +4,8 @@ import { Outlet } from "react-router-dom";
 import "./Layout.css";
 
 const links: MyLink[] = [
-  { name: "Home", path: "/" },
-  { name: "Characters", path: "/characters" },
+  { name: "Home", url: "/" },
+  { name: "Characters", url: "/characters" },
 ];
 
 export default function Layout() {

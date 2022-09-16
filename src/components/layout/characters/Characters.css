@@ -8,3 +8,18 @@
 .pagination {
   margin: 1rem;
 }
+
+.characters-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.characters-input > label {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.characters-input > label > img {
+  max-width: 1.5rem;
+}

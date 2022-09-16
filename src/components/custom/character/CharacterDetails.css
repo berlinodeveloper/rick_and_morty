@@ -1,0 +1,21 @@
+.character-details {
+  max-height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: var(--bg-color);
+  overflow-wrap: break-word;
+  overflow-y: auto;
+}
+
+.character-details > img {
+  max-width: 100%;
+}
+
+.character-details > ul {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
