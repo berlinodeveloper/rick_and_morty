@@ -3,8 +3,8 @@ import Links, { MyLink } from "components/custom/links/Links";
 import Loading from "components/custom/loading/Loading";
 import { useApiCharacters } from "hooks/custom/api";
 import { useSearchParams } from "react-router-dom";
-import "./Characters.css";
-import CharacterImg from "components/custom/character/CharacterImg";
+import "./CharactersIndex.css";
+import CharacterImgs from "components/custom/character/CharacterImgs";
 
 export default function Characters() {
   const [params] = useSearchParams();
@@ -39,13 +39,7 @@ export default function Characters() {
         <div className="pagination">
           <Links links={links} />
         </div>
-        <ul>
-          {characters.results.map((character) => (
-            <li key={character.id} className="relative">
-              <CharacterImg character={character} />
-            </li>
-          ))}
-        </ul>
+        <CharacterImgs characters={characters.results} />
         <div className="pagination">
           <Links links={links} />
         </div>

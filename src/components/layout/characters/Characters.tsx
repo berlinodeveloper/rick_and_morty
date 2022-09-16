@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Navigate,
-  NavLink,
-  Outlet,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import "./Characters.css";
 import search from "assets/icons/search.png";
 
@@ -52,7 +46,9 @@ export default function Characters() {
           />
         </label>
       </div>
-      <Outlet />
+      <div className="characters-list">
+        <Outlet />
+      </div>
     </div>
   );
 }

@@ -5,12 +5,9 @@
   gap: 1rem;
 }
 
-.pagination {
-  margin: 1rem;
-}
-
 .characters-input {
   display: flex;
+  margin-bottom: 1rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -22,4 +19,8 @@
 
 .characters-input > label > img {
   max-width: 1.5rem;
+}
+
+.characters-list > p {
+  margin-bottom: 1rem;
 }

@@ -38,6 +38,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration-line: underline;
+}
+
 #portal {
   position: fixed;
   z-index: 2;

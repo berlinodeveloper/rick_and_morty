@@ -1,0 +1,16 @@
+.pagination {
+  margin: 1rem 0;
+}
+
+.pagination li {
+  width: 7rem;
+  text-align: center;
+}
+
+.pagination li:first-child {
+  text-align: right;
+}
+
+.pagination li:last-child {
+  text-align: left;
+}
