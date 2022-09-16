@@ -3,14 +3,19 @@
 }
 
 .pagination li {
-  width: 7rem;
   text-align: center;
 }
 
+.pagination li {
+  width: 1rem;
+}
+
 .pagination li:first-child {
+  flex: auto;
   text-align: right;
 }
 
 .pagination li:last-child {
+  flex: auto;
   text-align: left;
 }
