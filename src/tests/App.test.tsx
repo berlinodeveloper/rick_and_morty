@@ -6,5 +6,5 @@ test("renders app", () => {
   render(<App />);
   const homeTitle = screen.getByText(/Rick and Morty - Home/i);
 
-  expect(homeTitle).toBeInTheDocument();
+  expect(homeTitle).toBeVisible();
 });
