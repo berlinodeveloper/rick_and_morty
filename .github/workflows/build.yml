@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: 16
       - run: npm install
-      - run: npm build
+      - run: npm run build
 
       #Deploy site to Github Pages
       - name: Setup Pages
