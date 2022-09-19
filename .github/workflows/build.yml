@@ -22,6 +22,9 @@ concurrency:
 
 jobs:
   build_and_deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       #Build site
@@ -30,11 +33,17 @@ jobs:
         with:
           node-version: 16
       - run: npm install
+      - run: npm run build
 
       #Deploy site to Github Pages
-      - run: git config --global user.email "berlinodeveloper@gmail.com"
-      - run: git config --global user.name "berlinodeveloper"
-      - run: git remote set-url origin https://berlinodeveloper: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@github.com/berlinodeveloper/rick_and_morty
-      - run: npm run deploy
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './build'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
 
   
