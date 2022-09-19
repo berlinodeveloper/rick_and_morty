@@ -32,6 +32,8 @@ jobs:
       - run: npm install
 
       #Deploy site to Github Pages
+      - run: git config --global user.email "berlinodeveloper@gmail.com"
+      - run: git config --global user.name "berlinodeveloper"
       - run: npm run deploy
 
   
