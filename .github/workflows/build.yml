@@ -34,6 +34,7 @@ jobs:
       #Deploy site to Github Pages
       - run: git config --global user.email "berlinodeveloper@gmail.com"
       - run: git config --global user.name "berlinodeveloper"
+      - run: git remote set-url origin https://berlinodeveloper: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@github.com/berlinodeveloper/rick_and_morty
       - run: npm run deploy
 
   
