@@ -14,7 +14,12 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route
+            path={
+              process.env.NODE_ENV === "production" ? "/rick_and_morty" : "/"
+            }
+            element={<Layout />}
+          >
             <Route index element={<Home />} />
             <Route path="home" element={<Home />} />
             <Route path="characters" element={<Characters />}>
