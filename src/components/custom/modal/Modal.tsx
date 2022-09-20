@@ -2,8 +2,6 @@ import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 
-const portalRoot = document.getElementById("portal") as HTMLElement;
-
 export default function Modal({
   children,
   setShowModal,
@@ -11,6 +9,7 @@ export default function Modal({
   children: React.ReactNode;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const containerRef = useRef(document.getElementById("portal")!);
   const elRef = useRef(document.createElement("div"));
 
   function handleContainerClick(
@@ -21,10 +20,12 @@ export default function Modal({
 
   useEffect(() => {
     const el = elRef.current;
-    portalRoot.appendChild(el);
+    const container = containerRef.current;
+
+    container.appendChild(el);
 
     return () => {
-      portalRoot.removeChild(el);
+      container.removeChild(el);
     };
   }, []);
 

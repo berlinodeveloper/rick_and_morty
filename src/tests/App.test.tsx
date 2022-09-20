@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  cleanup,
   fireEvent,
   render,
   screen,
@@ -7,6 +8,7 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react";
 import App from "components/App";
+import userEvent from "@testing-library/user-event";
 // import { CharactersApiResponse } from "hooks/custom/api";
 
 // const mockedCharacters: CharactersApiResponse = {
@@ -41,11 +43,18 @@ import App from "components/App";
 //   })
 // ) as unknown as typeof fetch;
 
+beforeAll(() => {
+  const portal = document.createElement("div");
+  portal.id = "portal";
+  document.body.appendChild(portal);
+});
+afterEach(cleanup);
+
 describe("Test some use cases", () => {
   it("renders app, stars a character and searches it in starred characters tab", async () => {
     //render app and change page
     render(<App />);
-    fireEvent.click(screen.getByText(/Characters/i));
+    fireEvent.click(screen.getByRole("link", { name: /Characters/i }));
     expect(screen.getByText(/Rick and Morty - Characters/i)).toBeVisible();
 
     //wait for characters and star the first one
@@ -60,5 +69,27 @@ describe("Test some use cases", () => {
     fireEvent.click(screen.getByText(/Starred/i));
     await waitForElementToBeRemoved(screen.queryByText(/Loading/i));
     expect(screen.getByAltText("starFilled")).toBeVisible();
+  });
+
+  it("renders app, searches a character and inspects its details", async () => {
+    const characterName = "Rick Sanchez";
+
+    //render app and change page
+    render(<App />);
+    fireEvent.click(screen.getByRole("link", { name: /Characters/i }));
+    expect(screen.getByText(/Rick and Morty - Characters/i)).toBeVisible();
+
+    //wait for characters and search "Rick Sanchez"
+    await waitForElementToBeRemoved(screen.queryByText(/Loading/i));
+    userEvent.type(screen.getByRole("textbox"), characterName);
+    const characterImg = await waitFor(() =>
+      screen.findByAltText(characterName)
+    );
+    expect(characterImg).toBeVisible();
+
+    //inspect the first character's details
+    fireEvent.click(characterImg);
+    await waitForElementToBeRemoved(screen.queryByText(/Loading/i));
+    expect(screen.getByText("Pilot")).toBeVisible();
   });
 });
