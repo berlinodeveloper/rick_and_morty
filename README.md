@@ -1,5 +1,9 @@
 # Rick and Morty Site
 
+## Hosting
+
+To visit the site online go to [Rick and Morty](https://berlinodeveloper.github.io/rick_and_morty)
+
 ## Available Scripts
 
 In the project directory, you can run:
