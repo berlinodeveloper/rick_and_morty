@@ -12,14 +12,13 @@ import store from "hooks/redux/store";
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter
+        basename={
+          process.env.NODE_ENV === "production" ? "/rick_and_morty" : "/"
+        }
+      >
         <Routes>
-          <Route
-            path={
-              process.env.NODE_ENV === "production" ? "/rick_and_morty" : "/"
-            }
-            element={<Layout />}
-          >
+          <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="home" element={<Home />} />
             <Route path="characters" element={<Characters />}>
